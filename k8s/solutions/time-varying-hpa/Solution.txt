@@ -1,0 +1,1 @@
+infer.py has been not included in the same py files instead the infer has been imported on the script and the file location hasnt been mentioned.

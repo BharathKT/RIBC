@@ -1,0 +1,16 @@
+1. Set environment variables.
+#export PROJECT_ID=PROJECT_ID
+#export SOURCE_CLUSTER=cluster-db1
+#export REGION=asia-southeast1
+
+2. Set the default environment variables.
+#gcloud config set project PROJECT_ID
+
+3. Clone the code repository.
+#git clone https://github.com/GoogleCloudPlatform/kubernetes-engine-samples
+
+4. Change to the working directory.
+#cd kubernetes-engine-samples/databases/gke-stateful-postgres
+
+# terraform -chdir=terraform/gke-standard init
+# terraform -chdir=terraform/gke-standard apply -var project_id=$PROJECT_ID

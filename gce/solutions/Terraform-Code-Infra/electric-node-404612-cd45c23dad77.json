@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "electric-node-404612",
+  "private_key_id": "cd45c23dad772ac484779ba7775938a2a5c91fd1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC24B14+teulRAa\n97ZqWjRiIW9wDpYyGwbPcpDDtARpaOWCIlK/Nt8hRJBirXngY4QRbG0PQhSYU8t9\nGmqfyEz9/kz7ruxaHOSIInQCZKj8pUn7536IStQ9IAVPrvohJW+rjlshqiVfg3a1\n287GrQod6v1QQnXz+Ro1TqZXZ3l/LdIs145Nknj5p6UA9ScEsxC4qSt3P3zOtZvq\nfYLEx9yKfAC5nOfAY6gRB1jl6DQQ3BpTHaREGweWv2iSxmBhsqADTb+MZy99hvTd\nMey48NaEWN3lnxscC74pojZLmhX7CQcaA8kxY/oywopeNJLmpInt7KA1mTWOsybH\nbcszhuVRAgMBAAECggEACn1+50+RU3wMw1VCFyXzQw1Kso19p2RmPrxiSj2fcqoA\nH1fHch1MTaDcnPJ5Tyo6O1MiSummG4pT/gpHw0BmzTubECVrvKwTXm1GhRQf3vU+\n0hbIivoq5FI7x8NAaSoX9qn494yGbg0RIFO6b+phbg+qpgHX+Q2pJ5VqRJGElktS\nWy5PHkGqCLdAsEWloJiEUGTL3FlaNSLD36w1r7XG5kiZxHGWMR2czqMrqi5VEXmg\nLnXzQOQY4iW3/Rlzc/74eQCoNW6bm4IwGbIRoUf8pxOEzb5KX96+CVPiW4zdDVS/\n3OJBczOmxx45JMZhRf9LVE/KMBuXurqSWt2tR6rM2QKBgQDkL7qJJBgfpHII6nFV\n3V4CusM0zWWsksk4isZ/ztBztDJjrT+TW5vKDjqdvVjVIxDWt2W1Wdl2liGzwYEY\n0IjXrwYu9nZC5Ot3CHqaAUXu57q5rIcrW9SYXY3up4ujlkDQAAcznwFu9PzTHEzO\n2X1sgnm4i1b/lrGZJB4NmUsuSQKBgQDNKoOPwDUIVPFq669Ykogf5hL1O2jSEKII\n5R5dsj0QkB06aFjk5/Kg5yVFGQ0gwMCFDTNi0UZfwrNv1MXvh84eTYMb9uoWGfqf\nkna6f4OeGxy5Ub8a8EZoWSEcpqM2qxrsE2G6L1/UeBr4xlwa82Yzd5zro397r6Zv\nPuJVc3seyQKBgQCMRksFw4qQ6SaxFG5Xup3wT59w9lNqo1HP0H/2Uc0TU9MmM3rB\nu68pp1WhYqUZYVUYqeV8dp+YpvJQ7sPN3WRCMvY6KIjK1q9pnWzA/8dd9lZzjfwK\nS4mFoP1/mL/e8J8nPt0ufrEC5NgHb35IKqtP6WWqbP4uYRUMb4eKFJKDAQKBgAZF\nPV4gXr6Rcgt1hpdraxOmgX/TQAHjlkA1WHc+olUmQm5tkAH3ANhgGCiDen48xeWL\nIL3tbXwxxDAvzZjjiq4sakxpgIAKbTmBTXWnvgsQAxG66N9W5p/70WJByY07L4h1\nkzAQkJo6zYA698evFrmN91LQXW4XUTvnLR21eNbZAoGBAKWHS10HPzX5CnnErTdW\n0+sJw/misPPwwWYAbAAOeEdiJJDgI/S7YC5U5iH+y0SKB/6x60ANsbGubwhc2uKg\nWX+4noLAk+afnHfh95aCGxSQ2XmVIjG8VYudPrgdfeIvWNaI2Wz8v63joI3Ws4a+\n9tG1A/tRlvzX+X701lkk3n1b\n-----END PRIVATE KEY-----\n",
+  "client_email": "sandboxuser1@electric-node-404612.iam.gserviceaccount.com",
+  "client_id": "106095066323153332515",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sandboxuser1%40electric-node-404612.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

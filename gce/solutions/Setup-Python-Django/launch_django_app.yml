@@ -1,0 +1,20 @@
+---
+- name: Deploy app on Ec2 instance
+  hosts: WebVM-IP(10.10.0.x)
+  user: ubuntu
+  sudo: yes
+  gather_facts: no
+  tasks:
+  - name: Pull app source code from repo
+    git:
+      repo: https://github.com/helloworld1008/IpManager.git
+      dest: /opt- name: Copy startup script to /opt directory of Web Server
+    copy:
+     src: /home/myuser/startup.sh
+     dest: /opt/startup.sh
+     mode: 0755- name: Run startup script
+    shell: ./startup.sh &
+    args:
+     chdir: /opt
+    async: 45
+    poll: 0$

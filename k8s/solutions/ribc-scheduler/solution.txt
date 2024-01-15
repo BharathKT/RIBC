@@ -1,0 +1,3 @@
+docker build -t Schedule-script
+docker run Schedule-script
+

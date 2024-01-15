@@ -1,0 +1,59 @@
+PostgreSQL backup and restore
+
+Backup Plan:
+
+export SOURCE_CLUSTER=cluster-db1
+export TARGET_CLUSTER=cluster-db2
+export REGION=asia-southeast1
+export DR_REGION=asia-southeast2
+export NAME_PREFIX=g-db-protected-app
+export BACKUP_PLAN_NAME=$NAME_PREFIX-bkp-plan-01
+export BACKUP_NAME=bkp-$BACKUP_PLAN_NAME
+export RESTORE_PLAN_NAME=$NAME_PREFIX-rest-plan-01
+export RESTORE_NAME=rest-$RESTORE_PLAN_NAME
+
+gcloud container clusters describe $SOURCE_CLUSTER --project=$PROJECT_ID  --region=$REGION --format='value (addonsConfig.gkeBackupAgentConfig)'
+
+kubectl get ProtectedApplication -A
+export NAMESPACE=postgresql
+export PROTECTED_APP=$(kubectl get ProtectedApplication -n $NAMESPACE | grep -v 'NAME' | awk '{ print $1 }')
+
+gcloud beta container backup-restore backup-plans create $BACKUP_PLAN_NAME \
+--project=$PROJECT_ID \
+--location=$DR_REGION \
+--cluster=projects/$PROJECT_ID/locations/$REGION/clusters/$SOURCE_CLUSTER \
+--selected-applications=$NAMESPACE/$PROTECTED_APP \
+--include-secrets \
+--include-volume-data \
+--cron-schedule="0 3 * * *" \
+--backup-retain-days=7 \
+--backup-delete-lock-days=0
+
+Restore Plan:
+gcloud beta container backup-restore restore-plans create $RESTORE_PLAN_NAME \
+  --project=$PROJECT_ID \
+  --location=$DR_REGION \
+  --backup-plan=projects/$PROJECT_ID/locations/$DR_REGION/backupPlans/$BACKUP_PLAN_NAME \
+  --cluster=projects/$PROJECT_ID/locations/$DR_REGION/clusters/$TARGET_CLUSTER \
+  --cluster-resource-conflict-policy=use-existing-version \
+  --namespaced-resource-restore-mode=delete-and-restore \
+  --volume-data-restore-policy=restore-volume-data-from-backup \
+  --selected-applications=$NAMESPACE/$PROTECTED_APP \
+  --cluster-resource-restore-scope="storage.k8s.io/StorageClass","scheduling.k8s.io/PriorityClass"
+
+gcloud beta container backup-restore restores create $RESTORE_NAME \
+  --project=$PROJECT_ID \
+  --location=$DR_REGION \
+  --restore-plan=$RESTORE_PLAN_NAME \
+  --backup=projects/$PROJECT_ID/locations/$DR_REGION/backupPlans/$BACKUP_PLAN_NAME/backups/$BACKUP_NAME \
+  --wait-for-completion
+
+
+kubectl get pvc -n $NAMESPACE
+
+./scripts/launch-client.sh
+kubectl exec -it pg-client -n postgresql -- /bin/bash
+
+
+
+

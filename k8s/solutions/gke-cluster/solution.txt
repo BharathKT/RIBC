@@ -1,0 +1,2 @@
+Configure a GKE Cluster
+In this requirement we are going to create a VPC for the Nodes and the PODS and create GKE cluster using the terraform code provided in the solution folder.

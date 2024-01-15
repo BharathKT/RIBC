@@ -1,0 +1,48 @@
+from google.cloud import pubsub_v1
+import json
+from datetime import datetime
+
+# Define Google Cloud credentials if not already set using environment variables or default settings
+# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'path_to_your_credentials.json'
+
+# Create a PublisherClient using your credentials
+publisher = pubsub_v1.PublisherClient()
+
+# Define the topic name
+topic_name = "sandbox/electric-node-404612/topics/topic-1"
+
+# Function to publish a message with attributes to Pub/Sub
+def publish_message(task_id, task_type):
+    # Define message attributes
+    message_attrs = {
+        "taskId": str(task_id),
+        "taskType": task_type,
+        "timestamp": datetime.utcnow().isoformat()  # Use UTC timestamp
+    }
+
+    # Define the message body, if needed
+    message_body = {
+        "taskDetails": "This is a sample message for the Datature sandbox env",
+        "additionalInfo": "This is a sample message for the Datature sandbox env, Task is for the publishing using the pubsub"
+    }
+
+    # Convert message body to JSON string
+    message_json = json.dumps(message_body)
+
+    # Publish the message with attributes and body
+    future = publisher.publish(
+        topic_name,
+        data=message_json.encode('utf-8'),
+        **message_attrs  # Pass message attributes as keyword arguments
+    )
+
+    # Wait for the message to be sent to Pub/Sub
+    future.result()
+
+# Example usage:
+if __name__ == "__main__":
+    task_id = "12345"  # Replace with the actual task ID
+    task_type = "dataProcessing"  # Replace with the actual task type
+
+    # Publish the message
+    publish_message(task_id, task_type)

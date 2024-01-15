@@ -1,0 +1,11 @@
+[Unit]
+Description=RIBC Bus and Driver Scheduler
+
+[Service]
+EnvironmentFile=schedule.env
+Type=oneshot
+ExecStartPre=/bin/bash -c 'copy_inputs.sh -i /tmp/scheduler/input'
+ExecStart=/usr/bin/python3.9 schedule.py
+ExecStopPost=/bin/bash -c 'copy_outputs.sh -o /tmp/scheduler/output -d ftp://ribc.com.sg/schedule'
+StandardOutput=journal+console
+StandardError=journal+console
